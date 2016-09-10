@@ -7,6 +7,14 @@ Created on Sat Sep 10 16:12:42 2016
 
 ### SKELETON FOR SEED ENCRYPTION PROGRAM
 
+def K(i):
+    print("inside K",i)
+    return i
+
+def F(k,r):
+    print("inside F",k,r)
+    return r
+
 def seed_encrypt(pt):
     print("inside seed_encrypt with PT=",pt)
         
@@ -30,9 +38,28 @@ def seed_encrypt(pt):
     #test 128 bit pt
     #print(int(bpt,2))
     #successful
-        
     
-    return bpt
+    # divide bpt into L and R
+    l=bpt[0:64]
+    r=bpt[64:127]
+    #print("-1",l,r)
+    
+    # 15 rounds
+    for i in range(15):
+        t=r
+        r="{0:b}".format(int(l,2)^int(F(K(i),r),2))
+        l=t
+        #print(i,l,r)
+    
+    #last round
+    l="{0:b}".format(int(l,2)^int(F(K(i),r),2))
+    r=r
+    #print("15",l,r)
+    
+    bpt=l+r
+    
+    
+    return int(bpt,2)
 
 
 
