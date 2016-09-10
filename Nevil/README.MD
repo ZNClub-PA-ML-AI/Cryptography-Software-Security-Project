@@ -28,6 +28,10 @@ structure with 16-round and is strong against DC (Differential Cryptanalysis), L
 
 A 128-bit input is divided into two 64-bit blocks (L, R), and the right 64-bit block is an input to the round function F, with a 64-bit subkey Ki generated from the key schedule.  L is the most significant 64 bits of 128-bit input, and R is the least significant 64 bits.
 
+A Fiestel Structure
+
+![wikipedia fiestel structure](https://upload.wikimedia.org/wikipedia/commons/f/fa/Feistel_cipher_diagram_en.svg "16 ROUNDS in SEED ENCRYPTION & DECRYPTION")
+
 Input : (L, R)
 
 ```python
