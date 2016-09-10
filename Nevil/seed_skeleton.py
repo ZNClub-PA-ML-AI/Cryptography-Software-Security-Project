@@ -20,7 +20,16 @@ def seed_encrypt(pt):
     
     #make bpt 128 bit long
     diff = 128 - len(bpt)
+    zeros = '0'*diff
+    rev_bpt=bpt[::-1]
+    temp = rev_bpt+zeros
+    bpt = temp[::-1]
     
+    #print(rev_bpt,"\n",temp,"\n",bpt,"\n")
+    
+    
+    
+        
     
     return bpt
 
