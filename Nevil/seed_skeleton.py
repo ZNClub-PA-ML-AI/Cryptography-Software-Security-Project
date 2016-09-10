@@ -27,8 +27,9 @@ def seed_encrypt(pt):
     
     #print(rev_bpt,"\n",temp,"\n",bpt,"\n")
     
-    
-    
+    #test 128 bit pt
+    #print(int(bpt,2))
+    #successful
         
     
     return bpt
