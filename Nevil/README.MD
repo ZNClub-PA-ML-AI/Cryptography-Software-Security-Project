@@ -115,3 +115,49 @@ Input : (L, R)
   The 2 S-boxes & 4 SS-boxes values are given [here](https://tools.ietf.org/html/rfc4269#appendix-A.2)
   
   
+### Key Schedule Ki
+
+1. The key schedule generates each round's subkeys.
+2. t uses the function G, addition in modular 2**32, subtraction in modular 2**32, and (left/right) circular rotation.
+3. A 128-bit input key is divided into four 32-bit blocks (Key0, Key1, Key2, Key3).
+4. The two 32-bit subkeys of the ith round, Ki0 and Ki1, are generated as follows:
+      1. Type 1 : Odd round
+        Ki0 = G(Key0 + Key2 - KCi)
+        Ki1 = G(Key1 - Key3 + KCi)
+        Key0 || Key1 = (Key0 || Key1) >> 8
+
+      2. Type 2 : Even round
+        Ki0 = G(Key0 + Key2 - KCi)
+        Ki1 = G(Key1 - Key3 + KCi)
+        Key2 || Key3 = (Key2 || Key3) << 8
+
+Where Ki0 is the most significant 32 bits of Ki, and Ki1 is the least
+   significant 32 bits of Ki (where i=0,...,3).
+
+   The following table shows constants used in KCi:
+
+          i    |    Value          i    |    Value
+         ============================================
+         KC1   |  0x9E3779B9      KC2   |  0x3C6EF373
+         KC3   |  0x78DDE6E6      KC4   |  0xF1BBCDCC
+         KC5   |  0xE3779B99      KC6   |  0xC6EF3733
+         KC7   |  0x8DDE6E67      KC8   |  0x1BBCDCCF
+         KC9   |  0x3779B99E      KC10  |  0x6EF3733C
+         KC11  |  0xDDE6E678      KC12  |  0xBBCDCCF1
+         KC13  |  0x779B99E3      KC14  |  0xEF3733C6
+         KC15  |  0xDE6E678D      KC16  |  0xBCDCCF1B
+
+   A pseudo code for the key schedule is as follows:
+
+         Input : (Key0, Key1, Key2, Key3)
+
+         for i = 1 to 16
+           Ki0 = G(Key0 + Key2 - KCi)
+           Ki1 = G(Key1 - Key3 + KCi)
+           if i is odd
+                  Key0 || Key1 = (Key0 || Key1) >> 8
+           else
+                  Key2 || Key3 = (Key2 || Key3) << 8
+
+         Output : (Keyi0, Keyi1), i=1 to 16
+
