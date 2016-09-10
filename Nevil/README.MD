@@ -32,6 +32,8 @@ A Fiestel Structure
 
 ![wikipedia fiestel structure](https://upload.wikimedia.org/wikipedia/commons/f/fa/Feistel_cipher_diagram_en.svg "16 ROUNDS in SEED ENCRYPTION & DECRYPTION")
 
+
+### Abstract Skeleton
 Input : (L, R)
 
 ```python
@@ -46,3 +48,36 @@ Input : (L, R)
   Output : (L, R)
 
   Where T is a temporary.
+
+### Function F(Ki,R)
+
+
+1. A 64-bit input block of the round function F is divided into two 32-bit blocks (R0, R1) and wrapped with 4 phases:
+  1. 1 phase of mixing two 32-bit subkey blocks (Ki0, Ki1)
+  2. 3 phases of function G(), with additions for mixing two 32-bit blocks.
+  3. Output (R0',R1') are as:
+    1. R0'= G[ 
+              G[  
+                G[(R0 ^ Ki0) ^ (R1 ^ Ki1)
+                ] 
+                + (R0 ^ Ki0)
+              ]
+              + 
+              G[(R0 ^ Ki0) ^ (R1 ^ Ki1)
+              ]
+            ] 
+            + 
+            G[ 
+                G[(R0 ^ Ki0) ^ (R1 ^ Ki1)
+                ] + (R0 ^ Ki0)
+            ]
+    2. R1'= G[ 
+              G[ 
+                G[(R0 ^ Ki0) ^ (R1 ^ Ki1)
+                ] + (R0 ^ Ki0)
+              ] 
+              + 
+              G[(R0 ^ Ki0) ^(R1 ^ Ki1)
+              ]
+            ]
+  
