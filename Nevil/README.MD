@@ -87,3 +87,20 @@ Input : (L, R)
                   ]
 
   
+### Function G(X)
+1. 32 bit X is divided into 4 sub blocks of 8 bit as X= X3 || X2 || X1 || X0.
+2. Output Z is madeup of 4 8-bit sub blocks as Z = Z3 ^ Z2 ^ Z1 ^ Z0.
+3. The computation for Zi is as:
+      Z3 = SS0
+      Z2 = SS1
+      Z1 = SS2
+      Z0 = SS3
+
+      where,
+      SS0(X0)= {S0(X0)& m3} || {S0(X0)& m2} || {S0(X0)& m1} || {S0(X0)& m0}
+      SS1(X1)= {S1(X1)& m0} || {S1(X1)& m3} || {S1(X1)& m2} || {S1(X1)& m1}
+      SS2(X2)= {S0(X2)& m1} || {S0(X2)& m0} || {S0(X2)& m3} || {S0(X2)& m2}
+      SS3(X3)= {S1(X3)& m2} || {S1(X3)& m1} || {S1(X3)& m0} || {S1(X3)& m3}
+      
+      where
+      
