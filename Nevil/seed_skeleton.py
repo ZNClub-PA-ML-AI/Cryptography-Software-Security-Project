@@ -19,6 +19,7 @@ def seed_encrypt(pt):
     print("integer is",pt)
     
     #make bpt 128 bit long
+    diff = 128 - len(bpt)
     
     
     return bpt
