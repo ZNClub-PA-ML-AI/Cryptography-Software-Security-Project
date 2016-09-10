@@ -56,33 +56,34 @@ Input : (L, R)
   1. 1 phase of mixing two 32-bit subkey blocks (Ki0, Ki1)
   2. 3 phases of function G(), with additions for mixing two 32-bit blocks.
   3. Output (R0',R1') are as:
-    1. R0'= G[ 
+    1. R0'= 
+            ```perl
+            G[ 
               G[  
                 G[(R0 ^ Ki0) ^ (R1 ^ Ki1)
                 ]
-
                 + (R0 ^ Ki0)
-                
               ]
-              
               + 
               G[(R0 ^ Ki0) ^ (R1 ^ Ki1)
-              
               ]
-            
             ] 
             + 
             G[ 
                 G[(R0 ^ Ki0) ^ (R1 ^ Ki1)
                 ] + (R0 ^ Ki0)
             ]
-    2. R1'= G[ 
-              G[ 
-                G[(R0 ^ Ki0) ^ (R1 ^ Ki1)
-                ] + (R0 ^ Ki0)
-              ] 
-              + 
-              G[(R0 ^ Ki0) ^(R1 ^ Ki1)
-              ]
-            ]
+            ```
+    2. R1'= 
+            ```perl
+                  G[ 
+                    G[ 
+                      G[(R0 ^ Ki0) ^ (R1 ^ Ki1)
+                      ] + (R0 ^ Ki0)
+                    ] 
+                    + 
+                    G[(R0 ^ Ki0) ^(R1 ^ Ki1)
+                    ]
+                  ]
+            ```
   
