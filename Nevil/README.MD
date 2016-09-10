@@ -57,8 +57,8 @@ Input : (L, R)
   2. 3 phases of function G(), with additions for mixing two 32-bit blocks.
   3. Output (R0',R1') are as:
     1. R0'= 
-            ```perl
-            G[ 
+            
+            G[ <br/>
               G[  
                 G[(R0 ^ Ki0) ^ (R1 ^ Ki1)
                 ]
@@ -73,9 +73,9 @@ Input : (L, R)
                 G[(R0 ^ Ki0) ^ (R1 ^ Ki1)
                 ] + (R0 ^ Ki0)
             ]
-            ```
+            
     2. R1'= 
-            ```perl
+            
                   G[ 
                     G[ 
                       G[(R0 ^ Ki0) ^ (R1 ^ Ki1)
@@ -85,5 +85,5 @@ Input : (L, R)
                     G[(R0 ^ Ki0) ^(R1 ^ Ki1)
                     ]
                   ]
-            ```
+
   
