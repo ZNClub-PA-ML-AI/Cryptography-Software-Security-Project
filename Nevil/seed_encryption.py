@@ -199,6 +199,14 @@ C9D1D819,4C404C0C,83838003,8F838C0F,CEC2CC0E,0B33383B,4A42480A,87B3B437
 """
 ]
 
+def make_32b(bpt):
+    diff = 32 - len(bpt)
+    zeros = '0'*diff
+    rev_bpt=bpt[::-1]
+    temp = rev_bpt+zeros
+    bpt = temp[::-1]
+    return bpt
+
 
 
 def make_64b(bpt):
@@ -228,6 +236,15 @@ def G(x):
     temp=s0.split(",")
     #print(s0,"\n",len(temp))
     
+    bx = "{0:b}".format(x)
+    bx=make_32b(bx)
+    #print("bx is ",bx)
+    #split 32b in 4
+    x0=bx[0:8]
+    x1=bx[8:16]
+    x2=bx[16:24]
+    x3=bx[24:32]
+    
     return x
 
 
@@ -243,10 +260,10 @@ def K(i):
     bkey=make_128b(bkey)
     
     # divide 128b key in 4 parts
-    key0=bkey[0:31]
-    key1=bkey[32:63]
-    key2=bkey[64:95]
-    key3=bkey[96:127]
+    key0=bkey[0:32]
+    key1=bkey[32:64]
+    key2=bkey[64:96]
+    key3=bkey[96:128]
     #print(key0,key1,key2,key3)
     gx = int(key0,2)%mod+int(key2,2)%mod-int(kc[i+1],16)%mod
     k0=G(abs(gx))
@@ -263,8 +280,8 @@ def K(i):
         temp = "{0:b}".format(ntemp)
         temp = make_64b(temp)
         #split
-        key2=temp[0:31]
-        key3=temp[32:63]
+        key2=temp[0:32]
+        key3=temp[32:64]
         
     else:
         temp = key2+key3
@@ -274,8 +291,8 @@ def K(i):
         temp = "{0:b}".format(ntemp)
         temp = make_64b(temp)
         #split
-        key2=temp[0:31]
-        key3=temp[32:63]
+        key2=temp[0:32]
+        key3=temp[32:64]
     return (k0,k1)
 
 def F(k,r):
@@ -306,7 +323,7 @@ def seed_encrypt(pt):
     
     # divide bpt into L and R
     l=bpt[0:64]
-    r=bpt[64:127]
+    r=bpt[64:128]
     #print("-1",l,r)
     
     # 15 rounds
