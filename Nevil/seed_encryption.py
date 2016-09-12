@@ -199,12 +199,14 @@ C9D1D819,4C404C0C,83838003,8F838C0F,CEC2CC0E,0B33383B,4A42480A,87B3B437
 """
 ]
 
+## str -> str
 def filter(z):
     if "\n" in z:
         return z[2:]
     else:
         return z
 
+## str -> str
 def make_32b(bpt):
     diff = 32 - len(bpt)
     zeros = '0'*diff
@@ -214,7 +216,7 @@ def make_32b(bpt):
     return bpt
 
 
-
+## str -> str
 def make_64b(bpt):
     diff = 64 - len(bpt)
     zeros = '0'*diff
@@ -224,7 +226,7 @@ def make_64b(bpt):
     return bpt
 
 
-
+## str -> str
 def make_128b(bpt):
     diff = 128 - len(bpt)
     zeros = '0'*diff
@@ -233,7 +235,7 @@ def make_128b(bpt):
     bpt = temp[::-1]
     return bpt
 
-
+## int -> int
 def G(x):
     print("inside G",x)
     
@@ -281,7 +283,7 @@ def G(x):
 
 
 
-
+## int -> (str,str)
 def K(i):
     print("inside K",i)
     
@@ -327,9 +329,31 @@ def K(i):
         key3=temp[32:64]
     return (k0,k1)
 
+## (str,str) -> str
 def F(k,r):
     print("inside F",k,r)
     k0,k1=k
+    #print(len(r))
+    
+    r0=r[0:32]
+    r1=r[32:64]
+    print(k0,k1,r0,r1)
+    
+    #g02
+    g02=G((int(r0,2)^k0)^(int(r1,2)^k1))+(int(r0,2)^k0)
+    
+    
+    #g11
+    t1111=int(r0,2)^k0
+    t1112=int(r1,2)^k1
+    t1113=int(r0,2)^k0
+    g111 = G(t1111^t1112)+t1113
+    g112 = G((int(r0,2)^k0)^(int(r1,2)^k1))
+    g11 = G(g111+g112)
+    
+    #rk0=g01+g02
+    rk1=g11
+    print(rk1)
     return r
 
 def seed_encrypt(pt):
@@ -363,7 +387,8 @@ def seed_encrypt(pt):
         t=r
         r="{0:b}".format(int(l,2)^int(F(K(i),r),2))
         l=t
-        #print(i,l,r)
+        r=make_64b(r)
+        print("after round ",i,len(l),len(r))
     
     #last round
     l="{0:b}".format(int(l,2)^int(F(K(i),r),2))
