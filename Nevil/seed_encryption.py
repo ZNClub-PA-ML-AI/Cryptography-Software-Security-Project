@@ -343,26 +343,26 @@ def F(k,r):
     common = G((int(r0,2)^k0)^(int(r1,2)^k1))
     
     #g01
-    g01=G(common+(int(r0,2)^k0))+common
+    g01=(G((common+(int(r0,2)^k0))%mod)+common)%mod
     
     #g02
-    g02=common+(int(r0,2)^k0)
+    g02=(common+(int(r0,2)^k0))%mod
     
     
     #g11
     t1111=int(r0,2)^k0
     t1112=int(r1,2)^k1
     t1113=int(r0,2)^k0
-    g111 = G(t1111^t1112)+t1113
-    g11 = G(g111+common)
+    g111 = (G(t1111^t1112)+t1113)%mod
+    g11 = G((g111+common)%mod)
     
-    rk0=g01+g02
+    rk0=(g01+g02)%mod
     rk1=g11
     #print("this are ",rk1,rk0)
     brk0 = "{0:b}".format(rk0)
     brk1 = "{0:b}".format(rk1)
     
-    br=make_64b(brk1+brk0)
+    br=make_64b(brk0+brk1)
     
     return br
 
