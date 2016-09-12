@@ -6,6 +6,15 @@ Created on Sat Sep 10 16:10:39 2016
 """
 
 ### SKELETON FOR SEED ENCRYPTION PROGRAM
+def make_64b(bpt):
+    diff = 64 - len(bpt)
+    zeros = '0'*diff
+    rev_bpt=bpt[::-1]
+    temp = rev_bpt+zeros
+    bpt = temp[::-1]
+    return bpt
+
+
 
 def make_128b(bpt):
     diff = 128 - len(bpt)
@@ -14,6 +23,13 @@ def make_128b(bpt):
     temp = rev_bpt+zeros
     bpt = temp[::-1]
     return bpt
+
+
+def G(x):
+    print("inside G",x)
+    return x
+
+
 
 
 def K(i):
@@ -31,13 +47,39 @@ def K(i):
     key2=bkey[64:95]
     key3=bkey[96:127]
     #print(key0,key1,key2,key3)
+    gx = int(key0,2)%mod+int(key2,2)%mod-int(kc[i+1],16)%mod
+    k0=G(abs(gx))
+    #print(k0)
+    gx = int(key1,2)%mod-int(key3,2)%mod+int(kc[i+1],16)%mod
+    k1=G(abs(gx))
     
-    
-    
-    return i
+    ## odd even based shift
+    if (i+1)%2==0:
+        temp = key2+key3
+        #shift
+        ntemp= int(temp,2)
+        ntemp= ntemp<<8
+        temp = "{0:b}".format(ntemp)
+        temp = make_64b(temp)
+        #split
+        key2=temp[0:31]
+        key3=temp[32:63]
+        
+    else:
+        temp = key2+key3
+        #shift
+        ntemp= int(temp,2)
+        ntemp= ntemp>>8
+        temp = "{0:b}".format(ntemp)
+        temp = make_64b(temp)
+        #split
+        key2=temp[0:31]
+        key3=temp[32:63]
+    return (k0,k1)
 
 def F(k,r):
     print("inside F",k,r)
+    k0,k1=k
     return r
 
 def seed_encrypt(pt):
@@ -92,6 +134,9 @@ kc={1:"0x9E3779B9",2:"0x3C6EF373",3:"0x78DDE6E6",4:"0xF1BBCDCC",
 5:"0xE3779B99",6:"0xC6EF3733",7:"0x8DDE6E67",8:"0x1BBCDCCF",
 9:"0x3779B99E",10:"0x6EF3733C",11:"0xDDE6E678",12:"0xBBCDCCF1",
 13:"0x779B99E3",14:"0xEF3733C6",15:"0xDE6E678D",16:"0xBCDCCF1B"}
+
+
+mod=4294967296
 
 PT="45"
 KEY="7059"
