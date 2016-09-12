@@ -248,21 +248,21 @@ def G(x):
     
     
     ss=SS[0].strip().split(",")    
-    print("is there in temp:",int(x0,2),len(ss))
+#    print("is there in temp:",int(x0,2),len(ss))
     z3 = ss[int(x0,2)]
-#    
-#    ss=SS[1].strip().split(",")
+    
+    ss=SS[1].strip().split(",")
 #    print("is there in temp:",int(x1,2),len(ss))
-#    z2 = ss[int(x1,2)]
-#    
-#    ss=SS[2].strip().split(",")
+    z2 = ss[int(x1,2)]
+    
+    ss=SS[2].strip().split(",")
 #    print("is there in temp:",int(x2,2),len(ss))
-#    z1 = ss[int(x2,2)]
-#    
-#    ss=SS[3].strip().split(",")
+    z1 = ss[int(x2,2)]
+    
+    ss=SS[3].strip().split(",")
 #    print("is there in temp:",int(x3,2),len(ss))
-#    z0 = ss[int(x3,2)]
-#   
+    z0 = ss[int(x3,2)]
+   
     
     z3="0x"+filter(z3)
     z3=int(z3,16)
@@ -273,9 +273,11 @@ def G(x):
     z0="0x"+filter(z0)
     z0=int(z0,16)
     
+    z = z3^z2^z1^z0
     
+    print("z=",z)
     
-    return x
+    return z
 
 
 
