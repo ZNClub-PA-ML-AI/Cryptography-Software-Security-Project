@@ -339,8 +339,14 @@ def F(k,r):
     r1=r[32:64]
     print(k0,k1,r0,r1)
     
+    #common
+    common = G((int(r0,2)^k0)^(int(r1,2)^k1))
+    
+    #g01
+    g01=G(common+(int(r0,2)^k0))+common
+    
     #g02
-    g02=G((int(r0,2)^k0)^(int(r1,2)^k1))+(int(r0,2)^k0)
+    g02=common+(int(r0,2)^k0)
     
     
     #g11
@@ -348,13 +354,17 @@ def F(k,r):
     t1112=int(r1,2)^k1
     t1113=int(r0,2)^k0
     g111 = G(t1111^t1112)+t1113
-    g112 = G((int(r0,2)^k0)^(int(r1,2)^k1))
-    g11 = G(g111+g112)
+    g11 = G(g111+common)
     
-    #rk0=g01+g02
+    rk0=g01+g02
     rk1=g11
-    print(rk1)
-    return r
+    #print("this are ",rk1,rk0)
+    brk0 = "{0:b}".format(rk0)
+    brk1 = "{0:b}".format(rk1)
+    
+    br=make_64b(brk1+brk0)
+    
+    return br
 
 def seed_encrypt(pt):
     print("inside seed_encrypt with PT=",pt)
