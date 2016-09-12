@@ -12,6 +12,12 @@ Created on Sat Sep 10 16:10:39 2016
 
 def K(i):
     print("inside K",i)
+    
+    # get key
+    
+    bkey = "{0:b}".format(int(KEY))
+    print(bkey)
+    
     return i
 
 def F(k,r):
@@ -76,7 +82,7 @@ kc={1:"0x9E3779B9",2:"0x3C6EF373",3:"0x78DDE6E6",4:"0xF1BBCDCC",
 13:"0x779B99E3",14:"0xEF3733C6",15:"0xDE6E678D",16:"0xBCDCCF1B"}
 
 PT="45"
-
+KEY="7059"
 CT=seed_encrypt(int(PT))
 
 print("Encrypted CT=",CT)
