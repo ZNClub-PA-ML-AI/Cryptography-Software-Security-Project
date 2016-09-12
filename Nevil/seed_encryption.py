@@ -7,16 +7,24 @@ Created on Sat Sep 10 16:10:39 2016
 
 ### SKELETON FOR SEED ENCRYPTION PROGRAM
 
-
+def make_128b(bpt):
+    diff = 128 - len(bpt)
+    zeros = '0'*diff
+    rev_bpt=bpt[::-1]
+    temp = rev_bpt+zeros
+    bpt = temp[::-1]
+    return bpt
 
 
 def K(i):
     print("inside K",i)
     
     # get key
-    
     bkey = "{0:b}".format(int(KEY))
-    print(bkey)
+    #print(bkey)
+    #print(make_128b(bkey))
+    bkey=make_128b(bkey)
+    
     
     return i
 
@@ -37,11 +45,7 @@ def seed_encrypt(pt):
     print("integer is",pt)
     
     #make bpt 128 bit long
-    diff = 128 - len(bpt)
-    zeros = '0'*diff
-    rev_bpt=bpt[::-1]
-    temp = rev_bpt+zeros
-    bpt = temp[::-1]
+    bpt = make_128b(bpt)
     
     #print(rev_bpt,"\n",temp,"\n",bpt,"\n")
     
