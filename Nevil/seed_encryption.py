@@ -199,6 +199,12 @@ C9D1D819,4C404C0C,83838003,8F838C0F,CEC2CC0E,0B33383B,4A42480A,87B3B437
 """
 ]
 
+def filter(z):
+    if "\n" in z:
+        return z[2:]
+    else:
+        return z
+
 def make_32b(bpt):
     diff = 32 - len(bpt)
     zeros = '0'*diff
@@ -241,24 +247,33 @@ def G(x):
     x3=bx[24:32]
     
     
-    ss=SS[0].strip().split(",")
+    ss=SS[0].strip().split(",")    
     print("is there in temp:",int(x0,2),len(ss))
     z3 = ss[int(x0,2)]
+#    
+#    ss=SS[1].strip().split(",")
+#    print("is there in temp:",int(x1,2),len(ss))
+#    z2 = ss[int(x1,2)]
+#    
+#    ss=SS[2].strip().split(",")
+#    print("is there in temp:",int(x2,2),len(ss))
+#    z1 = ss[int(x2,2)]
+#    
+#    ss=SS[3].strip().split(",")
+#    print("is there in temp:",int(x3,2),len(ss))
+#    z0 = ss[int(x3,2)]
+#   
     
-    ss=SS[1].strip().split(",")
-    print("is there in temp:",int(x1,2),len(ss))
-    z2 = ss[int(x1,2)]
+    z3="0x"+filter(z3)
+    z3=int(z3,16)
+    z2="0x"+filter(z2)
+    z2=int(z2,16)
+    z1="0x"+filter(z1)
+    z1=int(z1,16)
+    z0="0x"+filter(z0)
+    z0=int(z0,16)
     
-    ss=SS[2].strip().split(",")
-    print("is there in temp:",int(x2,2),len(ss))
-    z1 = ss[int(x2,2)]
     
-    ss=SS[3].strip().split(",")
-    print("is there in temp:",int(x3,2),len(ss))
-    z0 = ss[int(x3,2)]
-    
-    z0="0x"+z0
-    print(int(z0,16))
     
     return x
 
