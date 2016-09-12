@@ -25,6 +25,14 @@ def K(i):
     #print(make_128b(bkey))
     bkey=make_128b(bkey)
     
+    # divide 128b key in 4 parts
+    key0=bkey[0:31]
+    key1=bkey[32:63]
+    key2=bkey[64:95]
+    key3=bkey[96:127]
+    #print(key0,key1,key2,key3)
+    
+    
     
     return i
 
