@@ -197,7 +197,7 @@ def make_128b(bpt):
 
 ## int -> int
 def G(x):
-    print("inside G",x)
+    #print("inside G",x)
     
     bx = "{0:b}".format(x)
     bx=make_32b(bx)
@@ -237,7 +237,7 @@ def G(x):
     
     z = z3^z2^z1^z0
     
-    print("z=",z)
+    #print("z=",z)
     
     return z
 
@@ -245,7 +245,7 @@ def G(x):
 
 ## int -> (str,str)
 def K(i):
-    print("inside K",i)
+    #print("inside K",i)
     
     # get key
     bkey = "{0:b}".format(int(KEY))
@@ -291,13 +291,13 @@ def K(i):
 
 ## (str,str) -> str
 def F(k,r):
-    print("inside F",k,r)
+    #print("inside F",k,r)
     k0,k1=k
     #print(len(r))
     
     r0=r[0:32]
     r1=r[32:64]
-    print(k0,k1,r0,r1)
+    #print(k0,k1,r0,r1)
     
     #common
     common = G((int(r0,2)^k0)^(int(r1,2)^k1))
@@ -327,7 +327,7 @@ def F(k,r):
     return br 
 
 def seed_decrypt(ct):
-    print("inside seed_decrypt with CT=",ct)
+    #print("inside seed_decrypt with CT=",ct)
         
     
     #make bct 128 bit long
@@ -361,7 +361,7 @@ def seed_decrypt(ct):
 
 ### MAIN ENTRY FOR DECRYPTION
 
-CT="109598799899405097647067333502452697782"
+CT="326047834325964202684570978412317521344"
 KEY="7059"
 PT=seed_decrypt(int(CT))
 
