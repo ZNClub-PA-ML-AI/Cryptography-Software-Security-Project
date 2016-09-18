@@ -1,0 +1,17 @@
+we have already completed 50% of the encryption phase.
+
+now as the name suggested, BYTE ROTATION ENCRYPTION ALGORITHM right?
+block size = matrix size = 16 bytes = 4x4 matrix We use a modulo 4 approach
+
+FORMULA = ROW_NUM % SIZE OF SQUARE MATRIX
+
+1. Cpk -> Chr
+2. Chr -> Cvr
+3. Cvr -> Ce
+
+SUMMARY:
+M->Mp->MpT->
+K->Ke----------> +
+= Cpk-> Chr  -> Cvr -> Ce
+
+DECRYPTION
