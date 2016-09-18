@@ -237,7 +237,7 @@ def make_128b(bpt):
 
 ## int -> int
 def G(x):
-    print("inside G",x)
+    #print("inside G",x)
     
     bx = "{0:b}".format(x)
     bx=make_32b(bx)
@@ -277,7 +277,7 @@ def G(x):
     
     z = z3^z2^z1^z0
     
-    print("z=",z)
+    #print("z=",z)
     
     return z
 
@@ -285,7 +285,7 @@ def G(x):
 
 ## int -> (str,str)
 def K(i):
-    print("inside K",i)
+    #print("inside K",i)
     
     # get key
     bkey = "{0:b}".format(int(KEY))
@@ -331,13 +331,13 @@ def K(i):
 
 ## (str,str) -> str
 def F(k,r):
-    print("inside F",k,r)
+    #print("inside F",k,r)
     k0,k1=k
     #print(len(r))
     
     r0=r[0:32]
     r1=r[32:64]
-    print(k0,k1,r0,r1)
+    #print(k0,k1,r0,r1)
     
     #common
     common = G((int(r0,2)^k0)^(int(r1,2)^k1))
@@ -367,16 +367,17 @@ def F(k,r):
     return br
 
 def seed_encrypt(pt):
-    print("inside seed_encrypt with PT=",pt)
+    
+    #print("inside seed_encrypt with PT=",pt)
         
     # int to binary
     bpt = "{0:b}".format(pt)
 #    bpt=bin(pt) # prints 0b101101
-    print("binary is ",bpt)
+    #print("binary is ",bpt)
     
     # binary to int
     pt = int(bpt,2)
-    print("integer is",pt)
+    #print("integer is",pt)
     
     #make bpt 128 bit long
     bpt = make_128b(bpt)
@@ -422,13 +423,12 @@ def seed_encrypt(pt):
 
 ### MAIN ENTRY FOR ENCRYPTION
 
-PT="45"
+PT="80"
 KEY="7059"
 CT=seed_encrypt(int(PT))
 
 print("Encrypted CT=",CT)
 
 ### END
-
 
 
