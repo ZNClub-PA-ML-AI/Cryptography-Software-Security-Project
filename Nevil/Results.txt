@@ -1,0 +1,28 @@
+RESULTS OF L2 ENCRYPTION DECRYPTION
+
+---------------------------------------------
+10 DIGIT MOBILE NUMBER
+
+
+
+
+
+___________________________________________
+16 DIGIT AADHAR NUMBER
+
+
+
+
+
+___________________________________________
+20 DIGIT NUMBER
+
+PT="20162015201420132012"
+KEY="7059"
+CT=seed_encrypt(int(PT))
+Encrypted CT= 62437952296265191945072599940928785763
+
+CT="62437952296265191945072599940928785763"
+KEY="7059"
+PT=seed_decrypt(int(CT))
+Decrypted PT= 20162015201420132012
