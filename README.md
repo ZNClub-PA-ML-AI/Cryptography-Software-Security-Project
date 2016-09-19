@@ -1,7 +1,12 @@
 # CSS-Project
-Research paper, Encryption Algorithms and more
+1. [Encryption Algorithm Implementation](https://github.com/ZNevzz/CSS-Project/blob/master/README.md#encryption-algorithm)
+2. [Research paper presentation](https://github.com/ZNevzz/CSS-Project#research-paper)
+
+## [Encryption Algorithm](https://github.com/ZNevzz/CSS-Project/tree/master/Nevil)
 
 ## Research Paper
+
+### [Presentation](https://github.com/ZNevzz/CSS-Project/blob/master/CSS%20Research%20paper-Nevzz.pptx)
 
 ### Proposed algorithm
 
@@ -18,3 +23,4 @@ Research paper, Encryption Algorithms and more
   1. Rotate 1st row by 1 element, 2nd row by 2 elements, 3rd row by 3 elements, 4th row by 0 elements. This gives matrix Chr.
   2. Rotate 1st column by 1 element, 2nd column by 2 elements, 3rd column by 3 elements, 4th column by 0 elements. This gives matrix Cvr.
 8. Matrix Cvr is the final encrypted block
+
