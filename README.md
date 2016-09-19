@@ -1,10 +1,12 @@
 # CSS-Project
 1. [Encryption Algorithm Implementation]()
-2. [Research paper presentation]()
+2. [Research paper presentation](https://github.com/ZNevzz/CSS-Project#research-paper)
 
-## [Encryption Algorithm]()
+## [Encryption Algorithm](https://github.com/ZNevzz/CSS-Project/tree/master/Nevil)
 
 ## Research Paper
+
+### [Presentation](https://github.com/ZNevzz/CSS-Project/blob/master/CSS%20Research%20paper-Nevzz.pptx)
 
 ### Proposed algorithm
 
