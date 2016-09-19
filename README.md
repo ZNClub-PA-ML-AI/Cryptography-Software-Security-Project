@@ -1,5 +1,5 @@
 # CSS-Project
-1. [Encryption Algorithm Implementation]()
+1. [Encryption Algorithm Implementation](https://github.com/ZNevzz/CSS-Project/blob/master/README.md#encryption-algorithm)
 2. [Research paper presentation](https://github.com/ZNevzz/CSS-Project#research-paper)
 
 ## [Encryption Algorithm](https://github.com/ZNevzz/CSS-Project/tree/master/Nevil)
