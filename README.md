@@ -1,4 +1,4 @@
-# CSS-Project
+# Cryptography & Software Security Project
 1. [Encryption Algorithm Implementation](https://github.com/ZNevzz/CSS-Project/blob/master/README.md#encryption-algorithm)
 2. [Research paper presentation](https://github.com/ZNevzz/CSS-Project#research-paper)
 
